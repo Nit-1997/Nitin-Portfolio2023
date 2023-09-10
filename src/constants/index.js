@@ -160,7 +160,7 @@ const projects = [
     id: 'project-1',
     name: 'prepZone',
     description: '• Created a coding platform from scratch similar to Leetcode/Hackerrank.The platform supported remote code execution\n' +
-        'for more than 5 programming languages.',
+        'for more than 5 programming languages. | Use test credentials to use the app { Username: testuser@gmail.com  , Password : 1234 }',
     tags: [
       {
         name: 'react',
@@ -177,7 +177,7 @@ const projects = [
     ],
     image: leaderboard,
     repo: 'https://github.com/Nit-1997/interviewPrep',
-    demo: 'https://master--exquisite-duckanoo-10cab5.netlify.app/',
+    demo: 'https://prepzone.netlify.app/',
   },
   {
     id: 'project-2',
