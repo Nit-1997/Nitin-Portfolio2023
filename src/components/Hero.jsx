@@ -1,96 +1,83 @@
-import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
 import { styles } from '../styles';
-import { navLinks } from '../constants';
-import { nitin, bwmap, worldmap } from '../assets';
+import { nitin } from '../assets';
 
 const Hero = () => {
   return (
-    <>
-      <div className="absolute top-0 left-0 z-0 h-[100vh] w-screen">
-        <img
-          src={bwmap}
-          alt="world map"
-          className="w-full h-full sm:block hidden object-cover"
-        />
-      </div>
-      <div className="absolute top-0 left-0 z-0 h-[100vh] w-screen">
-        <img
-          src={worldmap}
-          alt="world map"
-          className="w-full h-full sm:hidden block object-cover"
-        />
-      </div>
-      <section
-        className="relative flex sm:flex-row flex-col w-full h-screen mx-auto 
-        sm:bg-hero bg-hero-mobile overflow-hidden">
-        <div
-          className={`absolute inset-0 sm:top-[250px] top-[150px] 
-          lg:top-[150px] xl:top-[250px] ${styles.paddingX} 
-          max-w-7xl mx-auto flex flex-row items-start
-          justify-between gap-3`}>
-          <div className="flex flex-col justify-center items-center mt-5 ml-3">
-            <div className="w-5 h-5 rounded-full bg-[#0a0a0a] sm:hidden" />
-            <div className="w-1 sm:h-80 h-40 bw-gradient sm:hidden" />
-          </div>
+    <section
+      id="hero-section"
+      className="relative w-full min-h-screen mx-auto bg-heroOverlay overflow-hidden flex items-center">
 
-          <div>
-            <h1
-              className={`${styles.heroHeadText} text-eerieBlack font-poppins uppercase`}>
-              Hi, I'm{' '}
-              <span
-                className="sm:text-battleGray sm:text-[90px] 
-                text-eerieBlack text-[50px] font-mova
-                font-extrabold uppercase">
-                Nitin Bhat
-              </span>
-            </h1>
-            <p className={`${styles.heroSubText} mt-2 text-eerieBlack`}>
-              A passionate software engineer with 2+ years of industry experience <br className="sm:block hidden" />
-            </p>
-          </div>
+      <div id="hero-gradient-overlay" className="absolute inset-0 bg-gradient-hero" />
+
+      <div
+        id="hero-content"
+        className={`relative ${styles.paddingX}
+        max-w-[1100px] mx-auto flex flex-col md:flex-row items-center justify-between gap-12 w-full
+        pt-[120px] pb-[100px]`}>
+
+        <div id="hero-text-container" className="flex-1 z-10 text-center md:text-left">
+          <p
+            id="hero-label"
+            className="animate-hero-fade-up-1 font-mono text-[13px] text-white/50 uppercase tracking-[3px] mb-6">
+            Senior AI Engineer &middot; Tech Lead
+          </p>
+
+          <h1
+            id="hero-heading"
+            className={`animate-hero-fade-up-2 ${styles.heroHeadText}`}>
+            Building AI systems{' '}
+            <span className="italic">that matter</span>
+          </h1>
+
+          <p
+            id="hero-description"
+            className={`animate-hero-fade-up-3 ${styles.heroSubText} mt-6 max-w-xl md:max-w-lg`}>
+            Tech lead for CVS Health's conversational AI Agent platform.
+            Building systems over billions of health records, intelligent
+            agents, and infrastructure that powers healthcare for 23M Americans.
+          </p>
+
           <div
-            className="w-screen flex flex-col items-start 
-            justify-center sm:-ml-[3rem] xxs:mt-4"></div>
-
-          <div></div>
+            id="hero-cta-container"
+            className="animate-hero-fade-up-4 mt-10 flex gap-4 flex-wrap justify-center md:justify-start">
+            <a
+              id="hero-cta-work"
+              href="#projects"
+              className="h-12 md:h-14 px-8 md:px-10 inline-flex items-center justify-center
+              bg-white text-textPrimary rounded-full font-sans font-semibold text-[15px] md:text-[16px]
+              hover:bg-white/90 transition-all duration-200">
+              View My Work
+            </a>
+            <a
+              id="hero-cta-contact"
+              href="#contact"
+              className="h-12 md:h-14 px-8 md:px-10 inline-flex items-center justify-center
+              border border-white/25 text-white rounded-full font-sans font-medium text-[15px] md:text-[16px]
+              hover:bg-white/10 transition-all duration-200">
+              Get In Touch
+            </a>
+          </div>
         </div>
 
         <div
-          className="absolute xs:bottom-10 bottom-32 w-full 
-          flex justify-center items-center">
-          <a href="#about">
-            <div
-              className="w-[35px] h-[64px] rounded-3xl border-4 
-            border-french border-dim flex
-            justify-center items-start p-2">
-              <motion.div
-                animate={{
-                  y: [0, 24, 0],
-                }}
-                transition={{
-                  duration: 1.5,
-                  repeat: Infinity,
-                  repeatType: 'loop',
-                }}
-                className="w-3 h-3 rounded-full bg-taupe mb-1"
-              />
-            </div>
-          </a>
+          id="hero-image-container"
+          className="animate-hero-fade-up-3 hidden md:flex flex-shrink-0 relative">
+          <div className="glass-card-dark p-3">
+            <img
+              id="hero-image"
+              src={nitin}
+              alt="Nitin Bhat"
+              className="w-[300px] lg:w-[340px] xl:w-[380px] h-auto object-cover rounded-2xl"
+            />
+          </div>
         </div>
+      </div>
 
-        {/* Your image comes here. Feel free to remove image if you don't plan to have one.*/}
-        <div>
-          <img
-            className="absolute bottom-0 ml-[50vw] 
-            lg:ml-[70vw] md:ml-[60vw] xmd:ml-[60vw] 2xl:ml-[75vw]
-            sm:h-[90vh] md:h-[70vh] xl:h-[80vh]"
-            src={nitin}
-            alt="Nitin"
-          />
-        </div>
-      </section>
-    </>
+      <div
+        id="hero-scroll-notch"
+        className="absolute bottom-0 left-1/2 -translate-x-1/2
+        w-[320px] md:w-[400px] h-10 bg-primary rounded-t-[2rem] scroll-notch" />
+    </section>
   );
 };
 

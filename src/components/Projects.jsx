@@ -1,155 +1,128 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { SectionWrapper } from '../hoc';
 import { styles } from '../styles';
-import { github, pineapple, pineappleHover } from '../assets';
+import { github } from '../assets';
 import { projects } from '../constants';
-import { fadeIn, textVariant, staggerContainer } from '../utils/motion';
+import { fadeIn, textVariant } from '../utils/motion';
 
-const ProjectCard = ({
-  id,
-  name,
-  description,
-  image,
-  repo,
-  demo,
-  index,
-  active,
-  handleClick,
-}) => {
+const ProjectCard = ({ id, name, description, tags, metric, metricSub, type, repo, demo, press, index }) => {
   return (
     <motion.div
-      variants={fadeIn('right', 'spring', index * 0.5, 0.75)}
-      className={`relative ${
-        active === id ? 'lg:flex-[3.5] flex-[10]' : 'lg:flex-[0.5] flex-[2]'
-      } flex items-center justify-center min-w-[170px] 
-      h-[420px] cursor-pointer card-shadow`}
-      onClick={() => handleClick(id)}>
-      <div
-        className="absolute top-0 left-0 z-10 bg-jetLight 
-      h-full w-full opacity-[0.5] rounded-[24px]"></div>
+      id={id}
+      variants={fadeIn('up', 'spring', index * 0.15, 0.75)}
+      className="project-card p-8 flex flex-col h-full">
 
-      <img
-        src={image}
-        alt={name}
-        className="absolute w-full h-full object-cover rounded-[24px]"
-      />
-
-      {active !== id ? (
-        <div className="flex items-center justify-start pr-[4.5rem]">
-          <h3
-            className="font-extrabold font-beckman uppercase w-[200px] h-[30px] 
-        whitespace-nowrap sm:text-[27px] text-[18px] text-timberWolf tracking-[1px]
-        absolute z-0 lg:bottom-[7rem] lg:rotate-[-90deg] lg:origin-[0,0]
-        leading-none z-20">
-            {name}
-          </h3>
-        </div>
-      ) : (
-        <>
-          <div
-            className="absolute bottom-0 p-8 justify-start w-full 
-            flex-col bg-[rgba(122,122,122,0.5)] rounded-b-[24px] z-20">
-            <div className="absolute inset-0 flex justify-end m-3">
-              <div
-                onClick={() => window.open(repo, '_blank')}
-                className="bg-night sm:w-11 sm:h-11 w-10 h-10 rounded-full 
-                  flex justify-center items-center cursor-pointer
-                  sm:opacity-[0.9] opacity-[0.8]">
-                <img
-                  src={github}
-                  alt="source code"
-                  className="w-4/5 h-4/5 object-contain"
-                />
-              </div>
+      <div id={`${id}-header`} className="flex items-start justify-between mb-5">
+        <span
+          id={`${id}-type-badge`}
+          className={`text-[11px] font-mono font-medium uppercase tracking-[2px]
+          px-3 py-1.5 rounded-full ${
+            type === 'enterprise'
+              ? 'bg-surfaceAccent text-textMuted border border-border'
+              : 'bg-[#E8F5E9] text-[#2E7D32] border border-[#C8E6C9]'
+          }`}>
+          {type === 'enterprise' ? 'Enterprise' : 'Open Source'}
+        </span>
+        <div id={`${id}-links`} className="flex gap-2">
+          {repo && (
+            <div
+              id={`${id}-github-link`}
+              onClick={() => window.open(repo, '_blank')}
+              className="w-9 h-9 rounded-full bg-surfaceAccent border border-border
+                flex justify-center items-center cursor-pointer
+                hover:bg-border transition-colors">
+              <img src={github} alt="source code" className="w-4 h-4 object-contain" />
             </div>
-
-            <h2
-              className="font-bold sm:text-[32px] text-[24px] 
-              text-timberWolf uppercase font-beckman sm:mt-0 -mt-[1rem]">
-              {name}
-            </h2>
-            <p
-              className="text-silver sm:text-[14px] text-[12px] 
-              max-w-3xl sm:leading-[24px] leading-[18px]
-              font-poppins tracking-[1px]">
-              {description}
-            </p>
-            <button
-              className="live-demo flex justify-between 
-              sm:text-[16px] text-[14px] text-timberWolf 
-              font-bold font-beckman items-center py-5 pl-2 pr-3 
-              whitespace-nowrap gap-1 sm:w-[138px] sm:h-[50px] 
-              w-[125px] h-[46px] rounded-[10px] glassmorphism 
-              sm:mt-[22px] mt-[16px] hover:bg-battleGray 
-              hover:text-eerieBlack transition duration-[0.2s] 
-              ease-in-out"
+          )}
+          {demo && (
+            <div
+              id={`${id}-demo-link`}
               onClick={() => window.open(demo, '_blank')}
-              onMouseOver={() => {
-                document
-                  .querySelector('.btn-icon')
-                  .setAttribute('src', pineappleHover);
-              }}
-              onMouseOut={() => {
-                document
-                  .querySelector('.btn-icon')
-                  .setAttribute('src', pineapple);
-              }}>
-              <img
-                src={pineapple}
-                alt="pineapple"
-                className="btn-icon sm:w-[34px] sm:h-[34px] 
-                  w-[30px] h-[30px] object-contain"
-              />
-              LIVE DEMO
-            </button>
+              className="h-9 px-4 rounded-full bg-cta
+                flex justify-center items-center cursor-pointer
+                hover:bg-textSecondary transition-colors">
+              <span className="text-ctaText text-[12px] font-sans font-medium">Live Demo</span>
+            </div>
+          )}
+        </div>
+      </div>
+
+      <div id={`${id}-metric-container`} className="mb-5">
+        <span id={`${id}-metric`} className="text-[44px] font-display text-textPrimary leading-none tracking-tight">
+          {metric}
+        </span>
+        <p id={`${id}-metric-sub`} className="text-textMuted text-[13px] font-sans mt-1.5">{metricSub}</p>
+      </div>
+
+      <h3 id={`${id}-name`} className="text-textPrimary text-[20px] font-sans font-semibold mb-3">
+        {name}
+      </h3>
+      <p id={`${id}-description`} className="text-textSecondary text-[14px] leading-[22px] font-sans flex-1">
+        {description}
+      </p>
+
+      <div id={`${id}-tags`} className="mt-6 flex flex-wrap gap-2">
+        {tags.map((tag) => (
+          <span
+            key={tag.name}
+            id={`${id}-tag-${tag.name}`}
+            className="text-[12px] font-mono font-medium text-textMuted
+            bg-surfaceAccent px-3 py-1.5 rounded-lg border border-border">
+            {tag.name}
+          </span>
+        ))}
+      </div>
+
+      {press && press.length > 0 && (
+        <div id={`${id}-press`} className="mt-4 pt-4 border-t border-border">
+          <p className="text-[11px] font-mono text-textMuted uppercase tracking-[2px] mb-2.5">Press Coverage</p>
+          <div className="flex flex-wrap gap-2">
+            {press.map((item) => (
+              <a
+                key={item.label}
+                href={item.url}
+                target="_blank"
+                rel="noreferrer"
+                className="text-[12px] font-sans font-medium text-textSecondary
+                bg-surfaceAccent px-3 py-1.5 rounded-lg border border-border
+                hover:text-textPrimary hover:border-textFaint transition-colors inline-flex items-center gap-1">
+                {item.label}
+                <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                </svg>
+              </a>
+            ))}
           </div>
-        </>
+        </div>
       )}
     </motion.div>
   );
 };
 
 const Projects = () => {
-  const [active, setActive] = useState('project-2');
-
   return (
-    <div className="-mt-[6rem]">
+    <div id="projects-container">
       <motion.div variants={textVariant()}>
-        <p className={`${styles.sectionSubText} `}>Case Studies</p>
-        <h2 className={`${styles.sectionHeadTextLight}`}>Projects.</h2>
+        <p id="projects-subtitle" className={styles.sectionSubText}>What I've Built</p>
+        <h2 id="projects-title" className={`${styles.sectionHeadText} mt-3`}>
+          Projects<span className="italic">.</span>
+        </h2>
       </motion.div>
 
-      <div className="w-full flex">
-        <motion.p
-          variants={fadeIn('', '', 0.1, 1)}
-          className="mt-4 text-taupe text-[18px] max-w-3xl leading-[30px]">
-          These projects demonstrate my expertise with practical examples of
-          some of my work, including brief descriptions and links to code
-          repositories and live demos. They showcase my ability to tackle
-          intricate challenges, adapt to various technologies, and efficiently
-          oversee projects.
-        </motion.p>
+      <motion.p
+        id="projects-description"
+        variants={fadeIn('', '', 0.1, 1)}
+        className="mt-6 text-textSecondary text-[16px] max-w-3xl leading-[26px] font-sans">
+        From enterprise AI systems processing billions of records to open-source developer tools —
+        these projects showcase my work across the full spectrum of software engineering.
+      </motion.p>
+
+      <div id="projects-grid" className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {projects.map((project, index) => (
+          <ProjectCard key={project.id} index={index} {...project} />
+        ))}
       </div>
-
-      <motion.div
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: false, amount: 0.25 }}
-        className={`${styles.innerWidth} mx-auto flex flex-col`}>
-        <div className="mt-[50px] flex lg:flex-row flex-col min-h-[70vh] gap-5">
-          {projects.map((project, index) => (
-            <ProjectCard
-              key={project.id}
-              index={index}
-              {...project}
-              active={active}
-              handleClick={setActive}
-            />
-          ))}
-        </div>
-      </motion.div>
     </div>
   );
 };
