@@ -7,127 +7,135 @@ import 'react-vertical-timeline-component/style.min.css';
 import { styles } from '../styles';
 import { experiences } from '../constants';
 import { SectionWrapper } from '../hoc';
-import { download, downloadHover, resume } from '../assets';
 import { textVariant } from '../utils/motion';
 
 const ExperienceCard = ({ experience }) => (
   <VerticalTimelineElement
+    id={`experience-${experience.company_name.replace(/\s/g, '-').toLowerCase()}`}
     contentStyle={{
-      background: '#eaeaec',
-      color: '#292929',
-      boxShadow:
-        'rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px',
+      background: '#F2F0ED',
+      color: '#111111',
+      boxShadow: '0 2px 12px rgba(0, 0, 0, 0.04)',
+      border: '1px solid #E5E3DF',
+      borderRadius: '1.125rem',
     }}
     contentArrowStyle={{
-      borderRight: '7px solid  #232631',
+      borderRight: '7px solid #E5E3DF',
     }}
     date={
-      <div>
-        <h3 className="text-dim text-[18px] font-bold font-beckman">
+      <div id={`exp-date-${experience.company_name.replace(/\s/g, '-').toLowerCase()}`}>
+        <h3 className="text-textMuted text-[14px] font-sans font-medium">
           {experience.date}
         </h3>
+        {experience.location && (
+          <p className="text-textFaint text-[13px] font-sans mt-1">{experience.location}</p>
+        )}
       </div>
     }
     iconStyle={{ background: experience.iconBg }}
     icon={
       <div className="flex justify-center items-center w-full h-full">
-        <img
-          src={experience.icon}
-          alt={experience.company_name}
-          className="w-[60%] h-[60%] object-contain"
-        />
+        {experience.icon ? (
+          <img
+            src={experience.icon}
+            alt={experience.company_name}
+            className="w-[60%] h-[60%] object-contain"
+          />
+        ) : (
+          <span className="text-white font-sans font-bold text-[11px]">
+            {experience.iconText || experience.company_name.charAt(0)}
+          </span>
+        )}
       </div>
     }>
     <div>
-      <h3 className="text-jetLight text-[24px] font-bold font-beckman tracking-[2px]">
+      <h3 id={`exp-title-${experience.company_name.replace(/\s/g, '-').toLowerCase()}`}
+        className="text-textPrimary text-[20px] font-sans font-semibold">
         {experience.title}
       </h3>
-      <p
-        className="text-taupe text-[22px] font-semibold font-overcameBold tracking-[1px]"
-        style={{ margin: 0 }}>
+      <p id={`exp-company-${experience.company_name.replace(/\s/g, '-').toLowerCase()}`}
+        className="text-textSecondary text-[15px] font-sans font-medium mt-1"
+        style={{ margin: 0, marginTop: '4px' }}>
         {experience.company_name}
       </p>
+      {experience.subtitle && (
+        <p id={`exp-subtitle-${experience.company_name.replace(/\s/g, '-').toLowerCase()}`}
+          className="text-textMuted text-[13px] font-mono mt-2">
+          {experience.subtitle}
+        </p>
+      )}
+      {experience.points && (
+        <ul id={`exp-points-${experience.company_name.replace(/\s/g, '-').toLowerCase()}`}
+          className="mt-5 space-y-3">
+          {experience.points.map((point, i) => (
+            <li key={i} className="text-textSecondary text-[14px] font-sans leading-[22px] pl-4 relative
+              before:content-[''] before:absolute before:left-0 before:top-[9px]
+              before:w-1.5 before:h-1.5 before:rounded-full before:bg-border">
+              {point}
+            </li>
+          ))}
+        </ul>
+      )}
+      {experience.links && (
+        <div className="mt-4 flex flex-wrap gap-2">
+          {experience.links.map((link, i) => (
+            <a key={i} href={link.url} target="_blank" rel="noreferrer"
+              className="text-[12px] font-mono font-medium text-textMuted
+              bg-surfaceAccent px-3 py-1.5 rounded-lg border border-border
+              hover:text-textPrimary hover:border-textFaint transition-colors">
+              {link.label} &rarr;
+            </a>
+          ))}
+        </div>
+      )}
     </div>
   </VerticalTimelineElement>
 );
 
 const Experience = () => {
   return (
-    <>
+    <div id="experience-container">
       <motion.div variants={textVariant()}>
-        <p className={`${styles.sectionSubText} sm:pl-16 pl-[2rem]`}>
-          What I've done so far
+        <p id="experience-subtitle" className={`${styles.sectionSubText} sm:pl-16 pl-[2rem]`}>
+          Career Journey
         </p>
-        <h2 className={`${styles.sectionHeadText} sm:pl-16 pl-[2rem]`}>
-          Work Experience.
+        <h2 id="experience-title" className={`${styles.sectionHeadText} sm:pl-16 pl-[2rem] mt-3`}>
+          Experience<span className="italic">.</span>
         </h2>
       </motion.div>
 
-      <div className="mt-20 flex flex-col">
+      <div id="experience-timeline" className="mt-16 flex flex-col">
         <VerticalTimeline className="vertical-timeline-custom-line">
           {experiences.map((experience, index) => (
             <ExperienceCard key={index} experience={experience} />
           ))}
-          <VerticalTimelineElement
-            contentStyle={{
-              background: '#eaeaec',
-              color: '#292929',
-              boxShadow:
-                'rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-            contentArrowStyle={{
-              borderRight: '7px solid  #232631',
-            }}
-            iconStyle={{ background: '#333333' }}
-            icon={
-              <div className="flex justify-center items-center w-full h-full">
-                <img
-                  src={resume}
-                  alt="resume"
-                  className="w-[45%] h-[45%] object-contain"
-                />
-              </div>
-            }>
-            <button
-              className="live-demo flex justify-between 
-              sm:text-[18px] text-[14px] text-timberWolf 
-              font-bold font-beckman items-center py-5 pl-3 pr-3 
-              whitespace-nowrap gap-1 sm:w-[148px] sm:h-[58px] 
-              w-[125px] h-[46px] rounded-[10px] bg-jetLight 
-              sm:mt-[22px] mt-[16px] hover:bg-battleGray 
-              hover:text-eerieBlack transition duration-[0.2s] 
-              ease-in-out"
-              onClick={() =>
-                window.open(
-                  'https://drive.google.com/file/d/11TYtdzT_7Vs0F8feS7qa2J5ShfRTsKg2/view?usp=sharing', //paste the link to your resume here
-                  '_blank'
-                )
-              }
-              onMouseOver={() => {
-                document
-                  .querySelector('.download-btn')
-                  .setAttribute('src', downloadHover);
-              }}
-              onMouseOut={() => {
-                document
-                  .querySelector('.download-btn')
-                  .setAttribute('src', download);
-              }}>
-              MY RESUME
-              <img
-                src={download}
-                alt="download"
-                className="download-btn sm:w-[26px] sm:h-[26px] 
-                w-[23px] h-[23px] object-contain"
-              />
-            </button>
-          </VerticalTimelineElement>
         </VerticalTimeline>
       </div>
-    </>
+
+      <div id="experience-education" className="mt-16 max-w-3xl mx-auto">
+        <div className="surface-card p-8">
+          <div id="education-badges" className="flex items-center gap-3 mb-4 flex-wrap">
+            <span className="text-[11px] font-mono font-medium uppercase tracking-[2px]
+              px-3 py-1.5 rounded-full bg-surfaceAccent text-textMuted border border-border">
+              Education
+            </span>
+            <span className="text-[11px] font-mono font-medium uppercase tracking-[2px]
+              px-3 py-1.5 rounded-full bg-[#FFF3E0] text-[#E65100] border border-[#FFE0B2]">
+              CKA Certified — 97/100
+            </span>
+          </div>
+          <h3 id="education-title" className="text-textPrimary text-[22px] font-display">
+            Master of Computer Science
+          </h3>
+          <p id="education-school" className="text-textSecondary text-[15px] font-sans mt-2">
+            Northeastern University, Boston — GPA: 3.905/4.0
+          </p>
+          <p id="education-date" className="text-textMuted text-[13px] font-mono mt-1">
+            Graduated May 2024
+          </p>
+        </div>
+      </div>
+    </div>
   );
 };
 

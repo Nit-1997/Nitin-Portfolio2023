@@ -5,22 +5,28 @@ import { services } from '../constants';
 import { fadeIn, textVariant } from '../utils/motion';
 import { SectionWrapper } from '../hoc';
 
-const ServiceCard = ({ index, title, icon }) => {
+const ServiceCard = ({ index, title, description }) => {
   return (
     <motion.div
-      variants={fadeIn('right', 'spring', 0.5 * index, 0.75)}
-      className="xs:w-[250px] w-full card-gradient p-[1px] rounded-[20px] shadow-card">
+      id={`service-card-${index}`}
+      variants={fadeIn('up', 'spring', 0.2 * index, 0.75)}
+      className="flex-1 min-w-[280px] max-w-[380px]">
       <div
-        options={{
-          max: 45,
-          scale: 1,
-          speed: 450,
-        }}
-        className="bg-jetLight rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col">
-        <img src={icon} alt={title} className="w-16 h-16 object-contain" />
-        <h3 className="text-taupe text-[18px] font-bold text-center">
+        id={`service-card-inner-${index}`}
+        className="surface-card p-8 h-full">
+        <div
+          id={`service-card-number-${index}`}
+          className="w-10 h-10 rounded-full bg-surfaceAccent flex items-center justify-center mb-5">
+          <span className="font-mono text-[13px] text-textMuted font-medium">
+            0{index + 1}
+          </span>
+        </div>
+        <h3 id={`service-title-${index}`} className="text-textPrimary text-[20px] font-sans font-semibold mb-3">
           {title}
         </h3>
+        <p id={`service-desc-${index}`} className="text-textSecondary text-[15px] leading-[24px] font-sans">
+          {description}
+        </p>
       </div>
     </motion.div>
   );
@@ -28,19 +34,26 @@ const ServiceCard = ({ index, title, icon }) => {
 
 const About = () => {
   return (
-    <div className="-mt-[6rem]">
+    <div id="about-container">
       <motion.div variants={textVariant()}>
-        <p className={styles.sectionSubText}>Introduction</p>
-        <h2 className={styles.sectionHeadText}>Overview.</h2>
+        <p id="about-subtitle" className={styles.sectionSubText}>Introduction</p>
+        <h2 id="about-title" className={`${styles.sectionHeadText} mt-3`}>
+          Overview<span className="italic">.</span>
+        </h2>
       </motion.div>
 
       <motion.p
+        id="about-description"
         variants={fadeIn('', '', 0.1, 1)}
-        className="mt-4 text-taupe text-[18px] max-w-3xl leading-[30px]">
-          Nitin Bhat is a versatile software engineer pursuing a Master of Computer Science at Northeastern University, Boston. With a strong foundation in Computer Science, Nitin has honed his skills through impactful roles at Cisco Systems and Sabre Corporation. He specializes in Java, SpringBoot, Kubernetes, AWS, and Docker, with a track record of optimizing systems, reducing latency, and generating significant revenue. Nitin's project portfolio showcases his adaptability, from building a Stock Trading Platform in Java to creating a Coding Interview Prep Portal in the MERN stack. His dedication to high-quality software solutions and collaborative approach make him an invaluable team member.
+        className="mt-8 text-textSecondary text-[17px] max-w-3xl leading-[28px] font-sans">
+        Senior AI Engineer and Tech Lead at CVS Health, leading the conversational AI Agent platform
+        and Unified Records Platform serving 23M Americans across 1B+ health records. Previously at
+        Cisco building Webex's data search platform serving 30M+ users. Certified Kubernetes
+        Administrator (CKA — 97/100). MS in Computer Science from Northeastern University (3.9 GPA).
+        Judge at SF Hacks 2026.
       </motion.p>
 
-      <div className="mt-20 flex flex-wrap gap-10">
+      <div id="about-services-grid" className="mt-16 flex flex-wrap gap-6 justify-center lg:justify-start">
         {services.map((service, index) => (
           <ServiceCard key={service.title} index={index} {...service} />
         ))}

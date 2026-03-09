@@ -6,8 +6,7 @@ import worldmap from './backgrounds/world-map.png';
 import logo from './logo/logo-black.png';
 import logotext from './logo/logo-text-black.png';
 
-
-import nitin from './personal/nitin.png';
+import nitin from './personal/nitin-new.jpg';
 
 import backend from './icons/backend.png';
 import ux from './icons/ux.png';
@@ -46,56 +45,57 @@ import microverse from './company/microverse.png';
 import sabre from './company/sabre.png';
 import cisco from './company/cisco.png';
 import farmguide from './company/farmguide.webp';
+import cvs from './company/cvs.svg';
 
 import komikult from './projects/komikult.png';
 import leaderboard from './projects/leaderboard.png';
 import math from './projects/math-magicians.png';
 
-
 export {
-    bwmap,
-    nairobi,
-    whiteabstract,
-    worldmap,
-    logo,
-    logotext,
-    nitin,
-    backend,
-    ux,
-    frontend,
-    prototyping,
-    github,
-    close,
-    download,
-    downloadHover,
-    pineapple,
-    pineappleHover,
-    menu,
-    resume,
-    send,
-    sendHover,
-    css,
-    docker,
-    figma,
-    git,
-    graphql,
-    html,
-    javascript,
-    nodejs,
-    postgresql,
-    rubyrails,
-    reactjs,
-    redux,
-    tailwind,
-    typescript,
-    komikult,
-    leaderboard,
-    math,
-    coverhunt,
-    dcc,
-    kelhel,
-    microverse,
-    sabre,
-    cisco,
-    farmguide
+  bwmap,
+  nairobi,
+  whiteabstract,
+  worldmap,
+  logo,
+  logotext,
+  nitin,
+  backend,
+  ux,
+  frontend,
+  prototyping,
+  github,
+  close,
+  download,
+  downloadHover,
+  pineapple,
+  pineappleHover,
+  menu,
+  resume,
+  send,
+  sendHover,
+  css,
+  docker,
+  figma,
+  git,
+  graphql,
+  html,
+  javascript,
+  nodejs,
+  postgresql,
+  rubyrails,
+  reactjs,
+  redux,
+  tailwind,
+  typescript,
+  komikult,
+  leaderboard,
+  math,
+  coverhunt,
+  dcc,
+  kelhel,
+  microverse,
+  sabre,
+  cisco,
+  farmguide,
+  cvs,
 };
