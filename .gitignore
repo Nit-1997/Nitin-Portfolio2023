@@ -128,3 +128,9 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Brainstorm mockups
+.superpowers/
+
+# SSR prerender output
+dist-ssr

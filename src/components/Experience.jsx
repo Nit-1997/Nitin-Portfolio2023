@@ -1,142 +1,165 @@
-import {
-  VerticalTimeline,
-  VerticalTimelineElement,
-} from 'react-vertical-timeline-component';
-import { motion } from 'framer-motion';
-import 'react-vertical-timeline-component/style.min.css';
-import { styles } from '../styles';
-import { experiences } from '../constants';
-import { SectionWrapper } from '../hoc';
-import { textVariant } from '../utils/motion';
+import { earlierRoles, experiences } from '../constants';
+import SectionHeading from './SectionHeading';
 
-const ExperienceCard = ({ experience }) => (
-  <VerticalTimelineElement
-    id={`experience-${experience.company_name.replace(/\s/g, '-').toLowerCase()}`}
-    contentStyle={{
-      background: '#F2F0ED',
-      color: '#111111',
-      boxShadow: '0 2px 12px rgba(0, 0, 0, 0.04)',
-      border: '1px solid #E5E3DF',
-      borderRadius: '1.125rem',
-    }}
-    contentArrowStyle={{
-      borderRight: '7px solid #E5E3DF',
-    }}
-    date={
-      <div id={`exp-date-${experience.company_name.replace(/\s/g, '-').toLowerCase()}`}>
-        <h3 className="text-textMuted text-[14px] font-sans font-medium">
-          {experience.date}
-        </h3>
-        {experience.location && (
-          <p className="text-textFaint text-[13px] font-sans mt-1">{experience.location}</p>
-        )}
-      </div>
-    }
-    iconStyle={{ background: experience.iconBg }}
-    icon={
-      <div className="flex justify-center items-center w-full h-full">
-        {experience.icon ? (
-          <img
-            src={experience.icon}
-            alt={experience.company_name}
-            className="w-[60%] h-[60%] object-contain"
-          />
-        ) : (
-          <span className="text-white font-sans font-bold text-[11px]">
-            {experience.iconText || experience.company_name.charAt(0)}
-          </span>
-        )}
-      </div>
-    }>
-    <div>
-      <h3 id={`exp-title-${experience.company_name.replace(/\s/g, '-').toLowerCase()}`}
-        className="text-textPrimary text-[20px] font-sans font-semibold">
-        {experience.title}
-      </h3>
-      <p id={`exp-company-${experience.company_name.replace(/\s/g, '-').toLowerCase()}`}
-        className="text-textSecondary text-[15px] font-sans font-medium mt-1"
-        style={{ margin: 0, marginTop: '4px' }}>
-        {experience.company_name}
-      </p>
-      {experience.subtitle && (
-        <p id={`exp-subtitle-${experience.company_name.replace(/\s/g, '-').toLowerCase()}`}
-          className="text-textMuted text-[13px] font-mono mt-2">
-          {experience.subtitle}
-        </p>
-      )}
-      {experience.points && (
-        <ul id={`exp-points-${experience.company_name.replace(/\s/g, '-').toLowerCase()}`}
-          className="mt-5 space-y-3">
-          {experience.points.map((point, i) => (
-            <li key={i} className="text-textSecondary text-[14px] font-sans leading-[22px] pl-4 relative
-              before:content-[''] before:absolute before:left-0 before:top-[9px]
-              before:w-1.5 before:h-1.5 before:rounded-full before:bg-border">
-              {point}
-            </li>
-          ))}
-        </ul>
-      )}
-      {experience.links && (
-        <div className="mt-4 flex flex-wrap gap-2">
-          {experience.links.map((link, i) => (
-            <a key={i} href={link.url} target="_blank" rel="noreferrer"
-              className="text-[12px] font-mono font-medium text-textMuted
-              bg-surfaceAccent px-3 py-1.5 rounded-lg border border-border
-              hover:text-textPrimary hover:border-textFaint transition-colors">
-              {link.label} &rarr;
-            </a>
-          ))}
-        </div>
-      )}
-    </div>
-  </VerticalTimelineElement>
-);
-
-const Experience = () => {
+const Point = ({ id, point }) => {
+  const [pre, bold, post, href] = point;
+  const strong = bold && <strong id={`${id}-strong`} className="font-semibold text-textPrimary">{bold}</strong>;
   return (
-    <div id="experience-container">
-      <motion.div variants={textVariant()}>
-        <p id="experience-subtitle" className={`${styles.sectionSubText} sm:pl-16 pl-[2rem]`}>
-          Career Journey
-        </p>
-        <h2 id="experience-title" className={`${styles.sectionHeadText} sm:pl-16 pl-[2rem] mt-3`}>
-          Experience<span className="italic">.</span>
-        </h2>
-      </motion.div>
-
-      <div id="experience-timeline" className="mt-16 flex flex-col">
-        <VerticalTimeline className="vertical-timeline-custom-line">
-          {experiences.map((experience, index) => (
-            <ExperienceCard key={index} experience={experience} />
-          ))}
-        </VerticalTimeline>
-      </div>
-
-      <div id="experience-education" className="mt-16 max-w-3xl mx-auto">
-        <div className="surface-card p-8">
-          <div id="education-badges" className="flex items-center gap-3 mb-4 flex-wrap">
-            <span className="text-[11px] font-mono font-medium uppercase tracking-[2px]
-              px-3 py-1.5 rounded-full bg-surfaceAccent text-textMuted border border-border">
-              Education
-            </span>
-            <span className="text-[11px] font-mono font-medium uppercase tracking-[2px]
-              px-3 py-1.5 rounded-full bg-[#FFF3E0] text-[#E65100] border border-[#FFE0B2]">
-              CKA Certified — 97/100
-            </span>
-          </div>
-          <h3 id="education-title" className="text-textPrimary text-[22px] font-display">
-            Master of Computer Science
-          </h3>
-          <p id="education-school" className="text-textSecondary text-[15px] font-sans mt-2">
-            Northeastern University, Boston — GPA: 3.905/4.0
-          </p>
-          <p id="education-date" className="text-textMuted text-[13px] font-mono mt-1">
-            Graduated May 2024
-          </p>
-        </div>
-      </div>
-    </div>
+    <li id={id} className="relative pl-5 text-[15px] leading-relaxed text-[#333] sm:text-[16px]">
+      <span id={`${id}-dot`} aria-hidden="true" className="absolute left-0.5 top-[10px] h-1.5 w-1.5 rounded-full bg-textPrimary" />
+      {pre}
+      {href ? (
+        <a
+          id={`${id}-link`}
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline decoration-[#bbb] underline-offset-[3px] hover:decoration-textPrimary">
+          {strong}
+        </a>
+      ) : (
+        strong
+      )}
+      {post}
+    </li>
   );
 };
 
-export default SectionWrapper(Experience, 'work');
+const Ladder = ({ id, steps }) => (
+  <ol id={id} aria-label="Promotions" className="mt-2.5 flex flex-wrap items-center gap-1.5 font-mono text-[11.5px] text-textSecondary">
+    {steps.map((step, i) => {
+      const last = i === steps.length - 1;
+      return (
+        <li id={`${id}-step-${i}`} key={step} className="flex items-center gap-1.5">
+          <span
+            id={`${id}-step-${i}-label`}
+            className={`rounded-md border px-2 py-0.5 ${last ? 'border-cta bg-cta text-ctaText' : 'border-border bg-surface'}`}>
+            {step}
+          </span>
+          {!last && (
+            <span id={`${id}-step-${i}-arrow`} aria-hidden="true" className="text-[#b3aea6]">
+              →
+            </span>
+          )}
+        </li>
+      );
+    })}
+  </ol>
+);
+
+const Featured = ({ id, items }) => (
+  <ul id={id} aria-label="Featured in" className="mt-6 grid gap-3 sm:grid-cols-3">
+    {items.map((item) => (
+      <li id={`${id}-${item.id}`} key={item.id}>
+        <a
+          id={`${id}-${item.id}-link`}
+          href={item.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex h-full flex-col gap-2.5 rounded-2xl border border-border bg-white px-[18px] py-4 transition duration-200 hover:-translate-y-0.5 hover:shadow-cardHover">
+          <span id={`${id}-${item.id}-source-mark`} className="flex h-[22px] items-center gap-2">
+            {item.wordmark ? (
+              <span id={`${id}-${item.id}-wordmark`} className="font-grotesk text-[15px] font-bold tracking-[-0.01em]">
+                <span id={`${id}-${item.id}-wordmark-accent`} className="text-[#e4002b]">
+                  FIERCE
+                </span>{' '}
+                Healthcare
+              </span>
+            ) : (
+              <img
+                id={`${id}-${item.id}-logo`}
+                src={item.logo}
+                alt={item.logoAlt}
+                loading="lazy"
+                decoding="async"
+                className={item.label ? 'h-[22px] w-auto' : 'h-[18px] w-auto'}
+              />
+            )}
+            {item.label && (
+              <span id={`${id}-${item.id}-label`} className="font-grotesk text-[15px] font-semibold">
+                {item.label}
+              </span>
+            )}
+          </span>
+          <span id={`${id}-${item.id}-title`} className="text-[13.5px] leading-snug text-[#333]">
+            {item.title}
+          </span>
+          <span id={`${id}-${item.id}-source`} className="mt-auto font-mono text-[11px] text-textMuted">
+            {item.source} ↗
+          </span>
+        </a>
+      </li>
+    ))}
+  </ul>
+);
+
+const Experience = () => (
+  <section id="experience" aria-labelledby="experience-heading" className="scroll-mt-16 py-16 md:py-24">
+    <div id="experience-inner" className="mx-auto max-w-[1040px] px-5 sm:px-12">
+      <SectionHeading id="experience" eyebrow="Experience" title="Where I've worked." />
+
+      <ol id="experience-list">
+        {experiences.map((job, i) => (
+          <li
+            id={`job-${job.id}`}
+            key={job.id}
+            className={`grid gap-3.5 md:grid-cols-[200px_1fr] md:gap-10 ${i === 0 ? '' : 'border-t border-border pt-9'} pb-9`}>
+            <div id={`job-${job.id}-meta`} className="flex items-center justify-between md:block">
+              <img
+                id={`job-${job.id}-logo`}
+                src={job.logo}
+                alt={job.company}
+                loading="lazy"
+                decoding="async"
+                className={`${job.logoHeight} w-auto max-w-[150px] object-contain`}
+              />
+              <p id={`job-${job.id}-when`} className="text-right font-mono text-[12px] leading-relaxed text-textMuted md:mt-3.5 md:text-left">
+                <time id={`job-${job.id}-dates`} dateTime={job.start}>
+                  {job.dates}
+                </time>
+                <br />
+                <span id={`job-${job.id}-location`}>{job.location}</span>
+              </p>
+            </div>
+
+            <div id={`job-${job.id}-body`}>
+              <h3 id={`job-${job.id}-title`} className="text-[20px] font-bold sm:text-[22px]">
+                {job.title}
+                <span id={`job-${job.id}-company-sr`} className="sr-only">
+                  {' '}at {job.company}
+                </span>
+              </h3>
+              {job.ladder && <Ladder id={`job-${job.id}-ladder`} steps={job.ladder} />}
+              <ul id={`job-${job.id}-points`} className="mt-4 space-y-2.5">
+                {job.points.map((point, p) => (
+                  <Point key={p} id={`job-${job.id}-point-${p}`} point={point} />
+                ))}
+              </ul>
+              {job.featured && <Featured id={`job-${job.id}-featured`} items={job.featured} />}
+            </div>
+          </li>
+        ))}
+      </ol>
+
+      <div
+        id="experience-earlier"
+        className="flex flex-col gap-3 rounded-2xl border border-border bg-surface px-6 py-5 text-[14.5px] text-textSecondary md:flex-row md:items-center md:gap-7">
+        <h3 id="experience-earlier-heading" className="font-mono text-[11px] font-normal uppercase tracking-[2.5px] text-textMuted">
+          Earlier
+        </h3>
+        <ul id="experience-earlier-list" className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-7">
+          {earlierRoles.map((role) => (
+            <li id={`experience-earlier-${role.id}`} key={role.id}>
+              <strong id={`experience-earlier-${role.id}-company`} className="font-semibold text-textPrimary">
+                {role.company}
+              </strong>{' '}
+              · {role.role}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+);
+
+export default Experience;
