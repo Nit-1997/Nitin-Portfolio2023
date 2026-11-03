@@ -1,9 +1,10 @@
-import Hero from './Hero';
 import Navbar from './Navbar';
-import About from './About';
-import Tech from './Tech';
+import Hero from './Hero';
+import Proof from './Proof';
 import Experience from './Experience';
 import Projects from './Projects';
+import Education from './Education';
 import Contact from './Contact';
+import Footer from './Footer';
 
-export { Hero, Navbar, About, Tech, Experience, Projects, Contact };
+export { Navbar, Hero, Proof, Experience, Projects, Education, Contact, Footer };

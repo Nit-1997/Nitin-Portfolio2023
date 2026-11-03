@@ -1,84 +1,84 @@
-import { styles } from '../styles';
-import { nitin } from '../assets';
+import photo640 from '../assets/nitin-640.webp';
+import photo320 from '../assets/nitin-320.webp';
+import { links } from '../constants';
 
-const Hero = () => {
-  return (
-    <section
-      id="hero-section"
-      className="relative w-full min-h-screen mx-auto bg-heroOverlay overflow-hidden flex items-center">
+const Hero = () => (
+  <section id="top" aria-labelledby="hero-heading" className="relative overflow-hidden bg-heroOverlay text-white">
+    <div id="hero-glow" aria-hidden="true" className="pointer-events-none absolute inset-0 bg-hero-glow" />
 
-      <div id="hero-gradient-overlay" className="absolute inset-0 bg-gradient-hero" />
+    <div
+      id="hero-inner"
+      className="relative mx-auto flex max-w-[1040px] flex-col-reverse items-start gap-7 px-5 pb-24 pt-28 sm:px-12 md:flex-row md:items-center md:gap-14 md:pb-32 md:pt-40">
+      <div id="hero-copy" className="flex-1">
+        <p
+          id="hero-badge"
+          className="animate-fade-up inline-flex items-center gap-2 rounded-full border border-white/15 px-3.5 py-1.5 font-mono text-[12px] text-white/75">
+          <span id="hero-badge-dot" aria-hidden="true" className="h-[7px] w-[7px] rounded-full bg-[#7bd389] shadow-[0_0_10px_#7bd389]" />
+          Staff AI Engineer at Shipt
+        </p>
 
-      <div
-        id="hero-content"
-        className={`relative ${styles.paddingX}
-        max-w-[1100px] mx-auto flex flex-col md:flex-row items-center justify-between gap-12 w-full
-        pt-[120px] pb-[100px]`}>
+        <h1
+          id="hero-heading"
+          className="animate-fade-up [animation-delay:80ms] mt-5 font-display text-[42px] leading-[1.04] tracking-[-0.02em] sm:text-[56px] lg:text-[72px]">
+          I build AI agents people trust with{' '}
+          <em id="hero-heading-accent" className="text-accentSoft">
+            their health and their groceries.
+          </em>
+        </h1>
 
-        <div id="hero-text-container" className="flex-1 z-10 text-center md:text-left">
-          <p
-            id="hero-label"
-            className="animate-hero-fade-up-1 font-mono text-[13px] text-white/50 uppercase tracking-[3px] mb-6">
-            Senior AI Engineer &middot; Tech Lead
-          </p>
+        <p
+          id="hero-lede"
+          className="animate-fade-up [animation-delay:160ms] mt-5 max-w-[520px] text-[15px] leading-relaxed text-white/65 sm:text-[18px]">
+          I take agents from demo to millions of users. Now leading agentic commerce at Shipt. Before that, I launched{' '}
+          <a
+            id="hero-lede-health100"
+            href={links.health100}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white underline decoration-white/40 underline-offset-4 hover:decoration-white">
+            Health100
+          </a>
+          , CVS Health&apos;s AI platform for 25M+ Americans, featured in Forbes.
+        </p>
 
-          <h1
-            id="hero-heading"
-            className={`animate-hero-fade-up-2 ${styles.heroHeadText}`}>
-            Building AI systems{' '}
-            <span className="italic">that matter</span>
-          </h1>
-
-          <p
-            id="hero-description"
-            className={`animate-hero-fade-up-3 ${styles.heroSubText} mt-6 max-w-xl md:max-w-lg`}>
-            Tech lead for CVS Health's conversational AI Agent platform.
-            Building systems over billions of health records, intelligent
-            agents, and infrastructure that powers healthcare for 23M Americans.
-          </p>
-
-          <div
-            id="hero-cta-container"
-            className="animate-hero-fade-up-4 mt-10 flex gap-4 flex-wrap justify-center md:justify-start">
-            <a
-              id="hero-cta-work"
-              href="#projects"
-              className="h-12 md:h-14 px-8 md:px-10 inline-flex items-center justify-center
-              bg-white text-textPrimary rounded-full font-sans font-semibold text-[15px] md:text-[16px]
-              hover:bg-white/90 transition-all duration-200">
-              View My Work
-            </a>
-            <a
-              id="hero-cta-contact"
-              href="#contact"
-              className="h-12 md:h-14 px-8 md:px-10 inline-flex items-center justify-center
-              border border-white/25 text-white rounded-full font-sans font-medium text-[15px] md:text-[16px]
-              hover:bg-white/10 transition-all duration-200">
-              Get In Touch
-            </a>
-          </div>
-        </div>
-
-        <div
-          id="hero-image-container"
-          className="animate-hero-fade-up-3 hidden md:flex flex-shrink-0 relative">
-          <div className="glass-card-dark p-3">
-            <img
-              id="hero-image"
-              src={nitin}
-              alt="Nitin Bhat"
-              className="w-[300px] lg:w-[340px] xl:w-[380px] h-auto object-cover rounded-2xl"
-            />
-          </div>
+        <div id="hero-ctas" className="animate-fade-up [animation-delay:240ms] mt-8 flex flex-col gap-3 sm:flex-row">
+          <a
+            id="hero-cta-work"
+            href="#experience"
+            className="inline-flex h-12 items-center justify-center rounded-full bg-white px-7 text-[15px] font-semibold text-textPrimary transition-colors hover:bg-white/90">
+            See my work
+          </a>
+          <a
+            id="hero-cta-contact"
+            href="#contact"
+            className="inline-flex h-12 items-center justify-center rounded-full border border-white/25 px-7 text-[15px] font-semibold text-white transition-colors hover:bg-white/10">
+            Get in touch
+          </a>
         </div>
       </div>
 
-      <div
-        id="hero-scroll-notch"
-        className="absolute bottom-0 left-1/2 -translate-x-1/2
-        w-[320px] md:w-[400px] h-10 bg-primary rounded-t-[2rem] scroll-notch" />
-    </section>
-  );
-};
+      <figure
+        id="hero-photo"
+        className="animate-fade-up w-[120px] shrink-0 rounded-[20px] border border-white/10 bg-white/5 p-1.5 shadow-glassDark sm:w-[160px] md:w-[300px] md:rounded-[26px] md:p-3 lg:w-[320px]">
+        <img
+          id="hero-photo-img"
+          src={photo640}
+          srcSet={`${photo320} 320w, ${photo640} 640w`}
+          sizes="(min-width: 1025px) 320px, (min-width: 768px) 300px, 160px"
+          width="640"
+          height="800"
+          alt="Portrait of Nitin Bhat"
+          className="block aspect-[4/5] w-full rounded-[15px] object-cover md:rounded-[18px]"
+        />
+      </figure>
+    </div>
+
+    <div
+      id="hero-notch"
+      aria-hidden="true"
+      className="absolute bottom-0 left-1/2 h-[26px] w-[200px] -translate-x-1/2 rounded-t-[26px] bg-primary md:h-10 md:w-[400px] md:rounded-t-[32px]"
+    />
+  </section>
+);
 
 export default Hero;

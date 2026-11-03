@@ -1,225 +1,209 @@
-import {
-  frontend,
-  backend,
-  prototyping,
-  cisco,
-  cvs,
-} from '../assets';
+import shipt from '../assets/brands/shipt.webp';
+import cvsHealth from '../assets/brands/cvs-health.webp';
+import cisco from '../assets/brands/cisco.webp';
+import sabre from '../assets/brands/sabre.webp';
+import northeastern from '../assets/brands/northeastern.webp';
+import northeasternSeal from '../assets/brands/northeastern-seal.webp';
+import jssstu from '../assets/brands/jssstu.webp';
+import kubernetes from '../assets/brands/kubernetes.webp';
+import forbes from '../assets/brands/forbes.webp';
+import health100 from '../assets/brands/health100.svg';
 
-export const navLinks = [
-  {
-    id: 'about',
-    title: 'About',
-  },
-  {
-    id: 'projects',
-    title: 'Projects',
-  },
-  {
-    id: 'work',
-    title: 'Experience',
-  },
-  {
-    id: 'contact',
-    title: 'Contact',
-  },
-];
+export const SITE_URL = 'https://nitinbhat.info';
+export const EMAIL = 'ntnbhat9@gmail.com';
+export const RESUME_URL = 'https://drive.google.com/file/d/1QZ9KJaHmgoy1qxLZVc1xRJpG3RaQE54G/view?usp=sharing';
 
-const services = [
-  {
-    title: 'AI Engineering',
-    icon: frontend,
-    description: 'LLM-powered systems, RAG pipelines, LangChain/LangGraph agents, and automated evaluation frameworks',
-  },
-  {
-    title: 'Platform Engineering',
-    icon: backend,
-    description: 'High-scale distributed systems with SpringBoot, reactive programming, and event-driven architectures',
-  },
-  {
-    title: 'Cloud & Observability',
-    icon: prototyping,
-    description: 'Kubernetes (CKA certified), GCP/AWS infrastructure, Terraform, and org-wide observability libraries',
-  },
-];
-
-const technologies = {
-  'Languages': [
-    { name: 'Java', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg' },
-    { name: 'Python', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
-    { name: 'Go', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg' },
-    { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
-    { name: 'C++', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg' },
-  ],
-  'AI / ML': [
-    { name: 'LangChain' },
-    { name: 'LangGraph' },
-    { name: 'FastAPI', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg' },
-    { name: 'PromptFoo' },
-    { name: 'Med-Gemma' },
-  ],
-  'Frameworks': [
-    { name: 'SpringBoot', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg' },
-    { name: 'React', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
-    { name: 'Node.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
-    { name: 'GraphQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg' },
-  ],
-  'Data & Messaging': [
-    { name: 'Kafka', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachekafka/apachekafka-original.svg' },
-    { name: 'Redis', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg' },
-    { name: 'MongoDB', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
-    { name: 'MySQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
-    { name: 'Cassandra' },
-    { name: 'ElasticSearch' },
-    { name: 'BigQuery' },
-    { name: 'Spanner' },
-  ],
-  'Cloud & DevOps': [
-    { name: 'AWS', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg' },
-    { name: 'GCP', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg' },
-    { name: 'Docker', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' },
-    { name: 'Kubernetes', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg' },
-    { name: 'Terraform', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg' },
-    { name: 'ArgoCD', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/argocd/argocd-original.svg' },
-    { name: 'Prometheus', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prometheus/prometheus-original.svg' },
-    { name: 'Grafana', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/grafana/grafana-original.svg' },
-  ],
+export const socials = {
+  linkedin: 'https://www.linkedin.com/in/nit-1997/',
+  github: 'https://github.com/Nit-1997',
+  x: 'https://x.com/ntnbhat',
 };
 
-const experiences = [
+export const links = {
+  health100: 'https://www.health100.com/',
+  forbes: 'https://www.forbes.com/sites/brucejapsen/2026/03/05/cvs-health-and-google-launch-ai-business-to-personalize-healthcare/',
+  fierce: 'https://www.fiercehealthcare.com/health-tech/cvs-unveils-health-100-its-new-google-powered-consumer-engagement-platform',
+};
+
+export const navLinks = [
+  { id: 'experience', title: 'Experience' },
+  { id: 'projects', title: 'Projects' },
+  { id: 'education', title: 'Education' },
+  { id: 'contact', title: 'Contact' },
+];
+
+export const brandStrip = [
+  { id: 'shipt', name: 'Shipt', logo: shipt, height: 'h-8 sm:h-9' },
+  { id: 'cvs', name: 'CVS Health', logo: cvsHealth, height: 'h-[18px] sm:h-[22px]' },
+  { id: 'cisco', name: 'Cisco', logo: cisco, height: 'h-8 sm:h-9' },
+  { id: 'sabre', name: 'Sabre', logo: sabre, height: 'h-[18px] sm:h-[22px]' },
+  { id: 'northeastern', name: 'Northeastern University', logo: northeastern, height: 'h-[22px] sm:h-7' },
+];
+
+export const stats = [
+  { id: 'americans', value: '25M+', label: 'Americans on the AI platform I launched' },
+  { id: 'records', value: '1B+', label: 'patient records summarized' },
+  { id: 'savings', value: '$3.4M', label: 'saved per year by one feature' },
+  { id: 'webex', value: '30M', label: 'Webex users on my search engine' },
+];
+
+export const experiences = [
   {
-    title: 'Senior AI Engineer',
-    company_name: 'CVS Health',
-    icon: cvs,
-    iconBg: '#ffffff',
-    date: 'May 2024 - Present',
+    id: 'shipt',
+    company: 'Shipt',
+    logo: shipt,
+    logoHeight: 'h-8',
+    title: 'Staff AI Engineer, Agentic Commerce',
+    start: '2026-09',
+    dates: 'Sep 2026 to now',
+    location: 'SF Bay Area',
+    points: [
+      ['Leading AI engineering for agentic shopping, including the next ', 'Ask Shipt'],
+      ['', 'MCP apps', ' that bring Shipt into ChatGPT, Claude, Muse and Instinct'],
+      ['An ', 'eval harness', ' that tests every agent at scale before release'],
+      ['', 'Glayvin', ': a governed AI developer platform for the whole company'],
+    ],
+  },
+  {
+    id: 'cvs',
+    company: 'CVS Health',
+    logo: cvsHealth,
+    logoHeight: 'h-[22px]',
+    title: 'Staff Engineer, Applied AI',
+    start: '2024-06',
+    end: '2026-09',
+    dates: 'Jun 2024 to Sep 2026',
     location: 'Sunnyvale, CA',
-    subtitle: 'Tech Lead — Conversational AI Agent Platform',
+    ladder: ['Senior Engineer', 'Tech Lead', 'Staff Engineer'],
     points: [
-      'Tech lead for CVS Health\'s conversational AI Agent platform',
-      'Built Unified Records Platform integrating 2K+ healthcare providers to surface labs, visit summaries, and allergy data across 1B+ health records for 23M Americans',
-      'Led the Insurance Network Verification feature end-to-end, preventing $3.4M in annual out-of-network losses',
-      'Improved real-time insurance eligibility by 46% via OCR optimization, retries, and circuit-breakers',
-      'Architected Chronos, a LangGraph-based AI analytics agent powered by Gemini & BigQuery, cutting manual ops analysis time by 70%',
-      'Own the insurance-as-payment component in CVS Health\'s vaccine/MinuteClinic booking flow',
-      'Partnered with infra team to self-host Med-Gemma 27B model on-prem with TrueFoundry-based gateway',
-      'Designed org-wide observability library adopted by 40+ services, reducing MTTR by 30%',
+      ['Led and launched ', 'Health100', ", CVS Health's agentic AI platform with Google", links.health100],
+      ['Voice and text health agent on ', 'Google ADK, LangGraph and A2A'],
+      ['', '1B+ records', ' summarized, quality gated by LLM-judge evals'],
+      ['', '$3.4M a year', ' saved with real-time insurance checks'],
+      ['Named inventor on a ', 'patent (filed)', ' for health records orchestration'],
+    ],
+    featured: [
+      {
+        id: 'health100',
+        url: links.health100,
+        logo: health100,
+        logoAlt: 'Health100',
+        label: 'Health100',
+        title: 'The agentic health platform I led and launched with Google.',
+        source: 'health100.com',
+      },
+      {
+        id: 'forbes',
+        url: links.forbes,
+        logo: forbes,
+        logoAlt: 'Forbes',
+        title: 'CVS Health and Google launch AI business to "personalize healthcare"',
+        source: 'Forbes · Mar 2026',
+      },
+      {
+        id: 'fierce',
+        url: links.fierce,
+        wordmark: true,
+        title: 'CVS unveils Health 100, its new Google-powered consumer engagement platform',
+        source: 'Fierce · Mar 2026',
+      },
     ],
   },
   {
+    id: 'cisco',
+    company: 'Cisco',
+    logo: cisco,
+    logoHeight: 'h-9',
     title: 'Software Engineer II',
-    company_name: 'Cisco Systems',
-    icon: cisco,
-    iconBg: '#049fd9',
-    date: 'Jan 2020 - Aug 2022',
-    location: 'Bangalore, India',
-    subtitle: 'Webex Collaboration — Data Analytics Platform',
+    start: '2020-01',
+    end: '2022-08',
+    dates: 'Jan 2020 to Aug 2022',
+    location: 'Bangalore',
+    ladder: ['Intern', 'Engineer I', 'Engineer II'],
     points: [
-      'Core contributor to Cisco Webex Contact Center\'s search platform (DAL search layer)',
-      'Developed Webex Data Search platform\'s query engine serving 30M users; reduced query latency by 30%',
-      'Built Kafka as a Service platform (CRDs, Operators, billing) with 99.9% uptime and 1K tenants',
-    ],
-    links: [
-      { label: 'Search API Docs', url: 'https://developer.webex.com/webex-contact-center/docs/getting-started-with-search-api' },
-      { label: 'Demo', url: 'https://app.vidcast.io/share/c8c778c5-6659-4145-891a-bafcece29863' },
+      ['', 'Webex search', ' for 30M users, 30% faster queries'],
+      ['', 'Kafka as a Service', ' for 1K tenants at 99.9% uptime'],
+      ['Kubernetes operators and admission webhooks in Go'],
     ],
   },
 ];
 
-const projects = [
+export const earlierRoles = [
+  { id: 'sabre', company: 'Sabre', role: 'SWE Intern, 2023' },
+  { id: 'comportement', company: 'Comportement', role: 'UI Intern, 2019' },
+  { id: 'farmguide', company: 'FarmGuide', role: 'Backend Intern, 2018' },
+  { id: 'crive', company: 'Crive', role: 'Full Stack Intern, 2018' },
+];
+
+export const projects = [
   {
-    id: 'project-1',
-    name: 'CVS Health 100 — AI Agent Platform',
-    description: 'Core engineer on CVS Health 100, the Google-powered AI consumer engagement platform. Built the Unified Records Platform integrating 2K+ healthcare providers to surface labs, visit summaries, and allergy data across 1B+ records for 23M Americans. Featured in Forbes, Fierce Healthcare, and Google Cloud press.',
-    tags: [
-      { name: 'Google Cloud' },
-      { name: 'LangChain' },
-      { name: 'SpringBoot' },
-      { name: 'Spanner' },
-    ],
-    metric: '1B+',
-    metricSub: 'health records, 23M Americans',
-    type: 'enterprise',
-    demo: 'https://www.cvs.com',
-    press: [
-      { label: 'Forbes', url: 'https://www.forbes.com/sites/brucejapsen/2026/03/05/cvs-health-and-google-launch-ai-business-to-personalize-healthcare/' },
-      { label: 'Fierce Healthcare', url: 'https://www.fiercehealthcare.com/health-tech/cvs-unveils-health-100-its-new-google-powered-consumer-engagement-platform' },
-      { label: 'Google Cloud', url: 'https://www.googlecloudpresscorner.com/2026-03-05-CVS-Health-and-Google-Cloud-Announce-New-Strategic-Partnership-to-Reimagine-Health-Care-Consumer-Engagement-and-Experiences' },
-    ],
+    id: 'open-agent-bot',
+    name: 'Open Agent Bot',
+    tag: 'Open source · 2026',
+    sold: false,
+    description: 'A personal research agent that answers with live widgets and full reports. Multi-user, with encrypted keys.',
+    stack: 'Next.js · Node · Supabase',
+    url: 'https://github.com/Nit-1997/open-agent-bot',
+    cta: 'GitHub',
   },
   {
-    id: 'project-2',
-    name: 'Chronos AI Agent',
-    description: 'LangGraph-based AI analytics agent powered by Gemini & BigQuery that automates ops queries (cancellations, traffic spikes, anomaly detection) via natural language conversations.',
-    tags: [
-      { name: 'LangGraph' },
-      { name: 'Gemini' },
-      { name: 'BigQuery' },
-      { name: 'Python' },
-    ],
-    metric: '70%',
-    metricSub: 'manual analysis time reduced',
-    type: 'enterprise',
+    id: 'clinical-model-accuracy',
+    name: 'Clinical Model Accuracy',
+    tag: 'Research · 2025',
+    sold: false,
+    description: 'Benchmarks and fine-tunes that make clinical predictions cheaper to run.',
+    stack: 'Python · LLMs',
+    url: 'https://github.com/Nit-1997/Clinical-Model-Accuracy-Experiments',
+    cta: 'GitHub',
   },
   {
-    id: 'project-3',
-    name: 'Clinical Model Accuracy Experiments',
-    description: 'Benchmarking LLMs in the medical domain — evaluating accuracy, recall, and grounding across clinical tasks using automated LLM-as-a-judge rubric frameworks built on PromptfooDev.',
-    tags: [
-      { name: 'LLMs' },
-      { name: 'PromptFoo' },
-      { name: 'Python' },
-      { name: 'Med-Gemma' },
-    ],
-    metric: '27B',
-    metricSub: 'parameter models evaluated',
-    type: 'open-source',
-    repo: 'https://github.com/Nit-1997/Clinical-Model-Accuracy-Experiments',
-  },
-  {
-    id: 'project-4',
-    name: 'Clinby',
-    description: 'White-labeled portfolio platform for physiotherapists. Built and sold to 2 practicing physiotherapists as a turnkey web presence solution.',
-    tags: [
-      { name: 'React' },
-      { name: 'Node.js' },
-      { name: 'Tailwind' },
-    ],
-    metric: '2',
-    metricSub: 'licenses sold to physios',
-    type: 'open-source',
-    repo: 'https://github.com/Nit-1997/clinby',
-  },
-  {
-    id: 'project-5',
-    name: 'Kubernetes Operator & Admission Controller',
-    description: 'Custom Kubernetes Operator and Admission Controller written in Go. The operator manages custom resources while the admission controller enforces pod-level policies.',
-    tags: [
-      { name: 'Go' },
-      { name: 'Kubernetes' },
-      { name: 'Docker' },
-    ],
-    metric: 'CKA',
-    metricSub: 'certified — scored 97/100',
-    type: 'open-source',
-    repo: 'https://github.com/Nit-1997/Kuberenetes-Operator',
-  },
-  {
-    id: 'project-6',
+    id: 'prepzone',
     name: 'PrepZone',
-    description: 'Full-stack coding platform similar to Leetcode/Hackerrank with remote code execution supporting 5+ programming languages. Built from scratch and sold licenses to college students.',
-    tags: [
-      { name: 'React' },
-      { name: 'MongoDB' },
-      { name: 'Docker' },
-      { name: 'Node.js' },
-    ],
-    metric: '5+',
-    metricSub: 'languages supported',
-    type: 'open-source',
-    repo: 'https://github.com/Nit-1997/interviewPrep',
-    demo: 'https://prepzone.netlify.app/',
+    tag: 'Sold licenses',
+    sold: true,
+    description: 'A coding practice platform with remote execution in 5+ languages, licensed to students.',
+    stack: 'React · Node · Docker',
+    url: 'https://prepzone.netlify.app/',
+    cta: 'Live demo',
+  },
+  {
+    id: 'clinby',
+    name: 'Clinby',
+    tag: 'Sold to 2 clinics',
+    sold: true,
+    description: 'White-label websites for physiotherapists, sold to two practices.',
+    stack: 'React · Node',
+    url: 'https://github.com/Nit-1997/clinby',
+    cta: 'GitHub',
   },
 ];
 
-export { services, technologies, experiences, projects };
+export const education = [
+  {
+    id: 'northeastern',
+    logo: northeasternSeal,
+    logoAlt: 'Northeastern University',
+    score: '3.905',
+    outOf: '/ 4',
+    title: 'MS Computer Science',
+    detail: 'Northeastern University, Boston · 2024',
+  },
+  {
+    id: 'sjce',
+    logo: jssstu,
+    logoAlt: 'JSS Science and Technology University',
+    score: '8.71',
+    outOf: '/ 10',
+    title: 'BE Computer Science',
+    detail: 'SJCE, JSS Science and Technology University, Mysuru · 2020',
+  },
+  {
+    id: 'cka',
+    logo: kubernetes,
+    logoAlt: 'Kubernetes',
+    score: '97',
+    outOf: '/ 100',
+    title: 'Certified Kubernetes Administrator',
+    detail: 'CNCF',
+  },
+];

@@ -1,58 +1,48 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
-  mode: 'jit',
+  content: ['./index.html', './src/**/*.{js,jsx}'],
   theme: {
     extend: {
       colors: {
         primary: '#FAF9F7',
         surface: '#F2F0ED',
-        surfaceAccent: '#ECEAE6',
         border: '#E5E3DF',
-        borderLight: '#EDEDEB',
         textPrimary: '#111111',
         textSecondary: '#555555',
         textMuted: '#737373',
-        textFaint: '#999999',
         cta: '#111111',
         ctaText: '#FFFFFF',
         heroOverlay: '#0A0A0A',
-        accent: '#6366f1',
         accentSoft: '#C5D0F5',
-        accentLight: '#818cf8',
+      },
+      opacity: {
+        15: '0.15',
+        55: '0.55',
+        65: '0.65',
+        85: '0.85',
       },
       boxShadow: {
-        glass: '0 8px 32px rgba(0, 0, 0, 0.08)',
         glassDark: '0 8px 32px rgba(0, 0, 0, 0.4)',
-        card: '0 2px 12px rgba(0, 0, 0, 0.04)',
         cardHover: '0 8px 30px rgba(0, 0, 0, 0.08)',
-        notch: '0 -4px 20px rgba(0, 0, 0, 0.05)',
-      },
-      screens: {
-        xs: '450px',
-        sm: '640px',
-        md: '768px',
-        xmd: '900px',
-        lg: '1025px',
-        xl: '1280px',
-        '2xl': '1536px',
-        '3xl': '1800px',
       },
       backgroundImage: {
         'gradient-cta': 'linear-gradient(180deg, #C5D0F5 0%, #DAE2FA 40%, #EBF0FC 70%, #F2F4FC 100%)',
-        'gradient-hero': 'linear-gradient(180deg, rgba(10,10,10,0.6) 0%, rgba(10,10,10,0.85) 100%)',
-        'gradient-soft': 'radial-gradient(ellipse at 50% 0%, rgba(197, 208, 245, 0.15) 0%, transparent 60%)',
+        'hero-glow': 'radial-gradient(ellipse at 80% 20%, rgba(197, 208, 245, 0.16), transparent 55%)',
       },
       fontFamily: {
-        display: ['Instrument Serif', 'Georgia', 'serif'],
-        sans: ['DM Sans', 'system-ui', 'sans-serif'],
-        mono: ['DM Mono', 'monospace'],
+        display: ['"Instrument Serif"', 'Georgia', 'serif'],
+        sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
+        mono: ['"DM Mono"', 'ui-monospace', 'monospace'],
+        grotesk: ['"Space Grotesk"', '"DM Sans"', 'sans-serif'],
       },
-      borderRadius: {
-        'xl': '0.9375rem',
-        '2xl': '1.125rem',
-        '3xl': '1.375rem',
-        '4xl': '1.625rem',
+      keyframes: {
+        'fade-up': {
+          from: { opacity: '0', transform: 'translateY(24px)' },
+          to: { opacity: '1', transform: 'translateY(0)' },
+        },
+      },
+      animation: {
+        'fade-up': 'fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both',
       },
     },
   },
